@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Love</title>
+    <title>T-Rex Love</title>
     <!-- Add Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <style>
         /* General Styles */
         body {
@@ -16,13 +16,12 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background: #fff9fc;
-            font-family: 'Poppins', sans-serif;
+            background: #fff0f6;
+            font-family: 'Fredoka One', cursive;
             text-align: center;
             overflow: hidden;
             position: relative;
-            scroll-behavior: smooth;
-            color: #333;
+            color: #ff4d6d;
         }
 
         /* Parallax Effect */
@@ -32,16 +31,16 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://example.com/your-background-image.jpg');
+            background-image: url('https://example.com/t-rex-background.jpg'); /* Replace with a T-Rex themed background */
             background-attachment: fixed;
             background-size: cover;
-            filter: blur(8px);
+            filter: blur(4px);
             z-index: -1;
         }
 
         /* Card Styles */
         .card {
-            background: white;
+            background: #ffe3ec;
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -61,34 +60,30 @@
         h1 {
             color: #ff4d6d;
             font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 10px;
         }
 
         p {
             font-size: 18px;
-            color: #666;
+            color: #d43f5e;
             margin-bottom: 20px;
-            line-height: 1.6;
         }
 
-        .heart {
+        /* T-Rex Icon */
+        .t-rex {
             width: 70px;
             height: 70px;
-            background-color: #ff4d6d;
+            background: url('https://example.com/t-rex-icon.png') no-repeat center/contain; /* Replace with a T-Rex icon */
             position: absolute;
             bottom: -35px;
             left: 50%;
             transform: translateX(-50%);
-            clip-path: polygon(50% 15%, 100% 40%, 80% 100%, 50% 80%, 20% 100%, 0% 40%);
-            animation: heartBeat 1s infinite alternate;
+            animation: dinoBounce 1s infinite alternate;
             cursor: pointer;
         }
 
-        /* Heart Animation */
-        @keyframes heartBeat {
+        @keyframes dinoBounce {
             0% { transform: translateX(-50%) scale(1); }
-            100% { transform: translateX(-50%) scale(1.5); }
+            100% { transform: translateX(-50%) scale(1.2); }
         }
 
         /* Button Styles */
@@ -101,7 +96,6 @@
             border: none;
             cursor: pointer;
             font-size: 18px;
-            text-transform: uppercase;
             transition: all 0.3s ease;
             width: 100%;
             max-width: 300px;
@@ -119,7 +113,6 @@
             font-size: 20px;
             color: #ff4d6d;
             font-weight: 600;
-            opacity: 0;
             animation: fadeIn 1s forwards;
         }
 
@@ -128,42 +121,11 @@
             to { opacity: 1; }
         }
 
-        /* Floating Hearts */
-        .floating-hearts {
-            position: absolute;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 100px;
-            overflow: hidden;
-        }
-
-        .floating-hearts span {
-            position: absolute;
-            bottom: 0;
-            width: 25px;
-            height: 25px;
-            background: #ff4d6d;
-            clip-path: polygon(50% 15%, 100% 40%, 80% 100%, 50% 80%, 20% 100%, 0% 40%);
-            animation: floatUp 4s infinite ease-in-out;
-        }
-
-        .floating-hearts span:nth-child(1) { left: 10px; animation-duration: 3s; }
-        .floating-hearts span:nth-child(2) { left: 40px; animation-duration: 4s; }
-        .floating-hearts span:nth-child(3) { left: 70px; animation-duration: 5s; }
-
-        /* Floating Hearts Animation */
-        @keyframes floatUp {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-150px); opacity: 0; }
-        }
-
         /* Secret Part Styles */
         .secret-part {
             display: none;
             margin-top: 40px;
-            background: #fff3f7;
+            background: #ffccdc;
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -174,6 +136,7 @@
             transition: opacity 0.5s ease;
             width: 90%;
             margin: 20px auto;
+            position: relative;
         }
 
         .secret-part.visible {
@@ -181,64 +144,14 @@
             opacity: 1;
         }
 
-        /* Confetti Animation */
-        .confetti {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .confetti span {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background-color: #ff4d6d;
-            animation: confettiAnimation 3s infinite ease-in-out;
-        }
-
-        @keyframes confettiAnimation {
-            0% { opacity: 1; transform: translateY(0) rotate(0deg); }
-            100% { opacity: 0; transform: translateY(500px) rotate(360deg); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 28px;
-            }
-
-            p {
-                font-size: 16px;
-            }
-
-            .card {
-                width: 85%;
-            }
-
-            .heart {
-                width: 55px;
-                height: 55px;
-            }
-
-            .button {
-                padding: 12px 25px;
-                font-size: 16px;
-                max-width: 250px;
-            }
-
-            .hidden-message {
-                font-size: 18px;
-            }
-
-            .secret-part {
-                font-size: 18px;
-                padding: 20px;
-            }
+        /* T-Rex Button in Secret Part */
+        .t-rex-button {
+            margin-top: 20px;
+            width: 80px;
+            height: 80px;
+            background: url('https://example.com/t-rex-icon.png') no-repeat center/contain; /* Replace with a T-Rex icon */
+            cursor: pointer;
+            display: inline-block;
         }
     </style>
     <script>
@@ -247,29 +160,7 @@
         }
 
         function revealSecretPart() {
-            const secretPart = document.getElementById('secretPart');
-            secretPart.classList.toggle('visible');
-
-            if (secretPart.classList.contains('visible')) {
-                generateConfetti();
-            }
-        }
-
-        function generateConfetti() {
-            const confettiContainer = document.createElement('div');
-            confettiContainer.classList.add('confetti');
-            document.body.appendChild(confettiContainer);
-
-            for (let i = 0; i < 30; i++) {
-                const confettiPiece = document.createElement('span');
-                confettiPiece.style.left = `${Math.random() * 100}%`;
-                confettiPiece.style.animationDuration = `${Math.random() * 2 + 3}s`;
-                confettiContainer.appendChild(confettiPiece);
-            }
-
-            setTimeout(() => {
-                confettiContainer.remove();
-            }, 5000);
+            document.getElementById('secretPart').classList.toggle('visible');
         }
     </script>
 </head>
@@ -277,26 +168,20 @@
     <!-- Parallax Background -->
     <div class="parallax"></div>
 
-    <!-- Floating Hearts -->
-    <div class="floating-hearts">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
     <!-- Card with message and button -->
     <div class="card">
-        <h1>To My One and Only</h1>
+        <h1>Happy Valentine’s Day Babe🥰🦖</h1>
         <p>You make my world brighter, my heart fuller, and my love endless💗.You are my forever and always💖</p>
         <button class="button" onclick="revealMessage()">Click</button>
         <p id="hiddenMessage" class="hidden-message">Good luck on your upcoming exam babe🥰💕! I know you’ll do amazing. Just remember, I’m always cheering for you!❤️</p>
-        <div class="heart" onclick="revealSecretPart()"></div>
+        <div class="t-rex" onclick="revealSecretPart()">🦖</div>
     </div>
 
     <!-- Secret Part -->
     <div id="secretPart" class="secret-part">
         <p>🎉 You found the secret part! 🎉</p>
         <p> Looks like you found my little surprise! Just a small reminder that you mean the world to me. Happy Valentine’s Day, babe!"💋💕</p>
+        <div class="t-rex-button" onclick="alert('Rawr! You found the secret T-Rex!')"></div>
     </div>
 </body>
 </html>
